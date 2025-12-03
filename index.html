@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vishal — Web Developer</title>
+
+  <!-- Poppins font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN (for quick, ready-to-publish style) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Theme customizations -->
+  <style>
+    :root{
+      --accent: #0ea5ff; /* blue accent */
+      --bg: #ffffff;
+      --muted: #6b7280;
+      --glass: rgba(255,255,255,0.6);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', ui-sans-serif, system-ui; background: var(--bg); color: #0f172a; }
+
+    /* subtle entrance animations */
+    .fade-up { transform: translateY(10px); opacity: 0; transition: all .6s cubic-bezier(.2,.8,.2,1); }
+    .fade-up.in-view { transform: translateY(0); opacity: 1; }
+
+    /* project image placeholder styling */
+    .ph-svg { background: linear-gradient(135deg, rgba(14,165,255,0.10), rgba(2,6,23,0.03)); display:flex; align-items:center; justify-content:center; height:220px; }
+
+    /* progress bar */
+    .progress { background: #e6eef7; border-radius: 9999px; height:10px; overflow:hidden; }
+    .progress > span { display:block; height:100%; background:linear-gradient(90deg,var(--accent),#2563eb); border-radius:inherit; }
+
+    /* navbar blur on mobile dropdown */
+    .nav-drawer { backdrop-filter: blur(6px); background: rgba(255,255,255,0.85); }
+
+    /* tiny shadow and hover lift */
+    .card { transition: transform .2s ease, box-shadow .2s ease; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(2,6,23,.08); }
+
+    /* footer */
+    footer a { color: var(--muted); }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <a href="#home" class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-md bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center text-white font-semibold">V</span>
+          <div class="hidden sm:block">
+            <div class="text-sm font-semibold">Vishal</div>
+            <div class="text-xs text-gray-500">Web Developer</div>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex gap-6 items-center text-sm">
+          <a class="text-gray-700 hover:text-sky-500" href="#home">Home</a>
+          <a class="text-gray-700 hover:text-sky-500" href="#about">About</a>
+          <a class="text-gray-700 hover:text-sky-500" href="#projects">Projects</a>
+          <a class="text-gray-700 hover:text-sky-500" href="#skills">Skills</a>
+          <a class="text-gray-700 hover:text-sky-500" href="#services">Services</a>
+          <a class="text-gray-700 hover:text-sky-500" href="#contact">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <a href="#contact" class="hidden md:inline-block px-4 py-2 text-sm font-medium rounded-md bg-sky-500 text-white hover:brightness-95">Hire Me</a>
+          <button id="menuBtn" aria-label="Open menu" class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100">
+            <!-- hamburger -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div id="mobileNav" class="md:hidden hidden nav-drawer border-t border-gray-100">
+      <div class="px-6 py-4 flex flex-col gap-3">
+        <a class="py-2 px-3 rounded-md text-gray-700 hover:bg-sky-50" href="#home">Home</a>
+        <a class="py-2 px-3 rounded-md text-gray-700 hover:bg-sky-50" href="#about">About</a>
+        <a class="py-2 px-3 rounded-md text-gray-700 hover:bg-sky-50" href="#projects">Projects</a>
+        <a class="py-2 px-3 rounded-md text-gray-700 hover:bg-sky-50" href="#skills">Skills</a>
+        <a class="py-2 px-3 rounded-md text-gray-700 hover:bg-sky-50" href="#services">Services</a>
+        <a class="py-2 px-3 rounded-md text-gray-700 hover:bg-sky-50" href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-12">
+
+    <!-- HERO -->
+    <section id="home" class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center py-12">
+      <div class="space-y-6">
+        <p class="text-sm text-sky-500 font-semibold">Hello — I’m</p>
+        <h1 class="text-4xl sm:text-5xl font-bold leading-tight">Vishal<br><span class="text-slate-600 font-semibold text-2xl">Web Developer</span></h1>
+        <p class="text-lg text-gray-600 max-w-xl">I build stylish, functional, and fast websites. I focus on performance, accessibility, and delightful UI that converts visitors into users.</p>
+
+        <div class="flex gap-4">
+          <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 bg-sky-500 text-white rounded-md shadow hover:translate-y-[-2px] transition">Hire Me</a>
+          <a href="#projects" class="inline-flex items-center gap-2 px-5 py-3 border border-gray-200 rounded-md text-gray-700 hover:bg-gray-50">View Projects</a>
+        </div>
+
+        <div class="flex items-center gap-6 mt-4 text-sm text-gray-500">
+          <div><span class="block text-2xl font-semibold text-slate-800">18</span><span class="block">Years old</span></div>
+          <div><span class="block text-2xl font-semibold text-slate-800">6+</span><span class="block">Projects shipped</span></div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="rounded-2xl overflow-hidden border border-gray-100 card">
+          <div class="ph-svg">
+            <svg width="80%" height="80%" viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hero image placeholder">
+              <rect width="100%" height="100%" fill="#0ea5ff33"/>
+              <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Poppins, sans-serif" font-size="36" fill="#0369a1">Stylish UI</text>
+            </svg>
+          </div>
+        </div>
+        <div class="absolute -bottom-6 -right-6 hidden lg:block">
+          <div class="bg-gradient-to-br from-sky-100 to-indigo-50 p-4 rounded-lg shadow-lg">
+            <div class="text-sm font-medium text-sky-600">Fast, accessible & aesthetic</div>
+            <div class="text-xs text-gray-500">Optimized for speed and conversions</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-12">
+      <div class="fade-up" data-delay="50">
+        <h2 class="text-2xl font-semibold">About Me</h2>
+        <p class="mt-4 max-w-3xl text-gray-600">
+          I'm Vishal, an 18-year-old web developer who builds user-friendly, fast, and aesthetic websites. I specialize in modern frontend development, crafting pixel-perfect UIs and smooth user experiences. I enjoy solving problems, learning new technologies, and creating interfaces that are both beautiful and accessible.
+        </p>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <div class="px-3 py-2 border rounded-md text-sm text-gray-700">HTML</div>
+          <div class="px-3 py-2 border rounded-md text-sm text-gray-700">CSS</div>
+          <div class="px-3 py-2 border rounded-md text-sm text-gray-700">JavaScript</div>
+          <div class="px-3 py-2 border rounded-md text-sm text-gray-700">React</div>
+          <div class="px-3 py-2 border rounded-md text-sm text-gray-700">Tailwind</div>
+          <div class="px-3 py-2 border rounded-md text-sm text-gray-700">Node.js</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-12">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-semibold">Projects</h2>
+        <p class="text-sm text-gray-500">A selection of recent work — images are placeholders</p>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Project 1 -->
+        <article class="card bg-white rounded-lg border p-4">
+          <div class="rounded-md overflow-hidden">
+            <div class="ph-svg">
+              <svg viewBox="0 0 600 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" fill="#0ea5ff22"/>
+                <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Poppins" font-size="24" fill="#0369a1">Portfolio Site</text>
+              </svg>
+            </div>
+          </div>
+          <div class="mt-4">
+            <h3 class="font-semibold text-lg">Portfolio Site</h3>
+            <p class="mt-2 text-sm text-gray-500">A minimal portfolio showcasing projects and blog posts with smooth animations and fast load times.</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded">React</span>
+              <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded">Tailwind</span>
+              <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded">Vite</span>
+            </div>
+
+            <div class="mt-4 flex gap-3">
+              <a href="#" class="text-sky-500 font-medium text-sm">Live Demo</a>
+              <a href="#" class="text-gray-500 text-sm">Repo</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card bg-white rounded-lg border p-4">
+          <div class="rounded-md overflow-hidden">
+            <div class="ph-svg">
+              <svg viewBox="0 0 600 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" fill="#0ea5ff22"/>
+                <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Poppins" font-size="24" fill="#0369a1">E-commerce UI</text>
+              </svg>
+            </div>
+          </div>
+          <div class="mt-4">
+            <h3 class="font-semibold text-lg">E-commerce UI</h3>
+            <p class="mt-2 text-sm text-gray-500">A responsive product listing and checkout interface designed for conversions and speed.</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded">HTML</span>
+              <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded">CSS</span>
+              <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded">JS</span>
+            </div>
+
+            <div class="mt-4 flex gap-3">
+              <a href="#" class="text-sky-500 font-medium text-sm">Live Demo</a>
+              <a href="#" class="text-gray-500 text-sm">Repo</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="card bg-white rounded-lg border p-4">
+          <div class="rounded-md overflow-hidden">
+            <div class="ph-svg">
+              <svg viewBox="0 0 600 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" fill="#0ea5ff22"/>
+                <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Poppins" font-size="24" fill="#0369a1">Blog Platform</text>
+              </svg>
+            </div>
+          </div>
+          <div class="mt-4">
+            <h3 class="font-semibold text-lg">Blog Platform</h3>
+            <p class="mt-2 text-sm text-gray-500">Clean reading experience with accessibility-focused typography and responsive images.</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded">React</span>
+              <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded">Node.js</span>
+            </div>
+
+            <div class="mt-4 flex gap-3">
+              <a href="#" class="text-sky-500 font-medium text-sm">Live Demo</a>
+              <a href="#" class="text-gray-500 text-sm">Repo</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="card bg-white rounded-lg border p-4">
+          <div class="rounded-md overflow-hidden">
+            <div class="ph-svg">
+              <svg viewBox="0 0 600 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" fill="#0ea5ff22"/>
+                <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Poppins" font-size="24" fill="#0369a1">Dashboard</text>
+              </svg>
+            </div>
+          </div>
+          <div class="mt-4">
+            <h3 class="font-semibold text-lg">Analytics Dashboard</h3>
+            <p class="mt-2 text-sm text-gray-500">Interactive charts and responsive layouts for data-heavy applications.</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded">React</span>
+              <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded">Chart.js</span>
+            </div>
+
+            <div class="mt-4 flex gap-3">
+              <a href="#" class="text-sky-500 font-medium text-sm">Live Demo</a>
+              <a href="#" class="text-gray-500 text-sm">Repo</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 5 -->
+        <article class="card bg-white rounded-lg border p-4">
+          <div class="rounded-md overflow-hidden">
+            <div class="ph-svg">
+              <svg viewBox="0 0 600 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" fill="#0ea5ff22"/>
+                <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Poppins" font-size="24" fill="#0369a1">Landing Page</text>
+              </svg>
+            </div>
+          </div>
+          <div class="mt-4">
+            <h3 class="font-semibold text-lg">Marketing Landing</h3>
+            <p class="mt-2 text-sm text-gray-500">Conversion-oriented landing page with A/B-friendly structure and fast LCP.</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded">HTML</span>
+              <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded">Tailwind</span>
+            </div>
+
+            <div class="mt-4 flex gap-3">
+              <a href="#" class="text-sky-500 font-medium text-sm">Live Demo</a>
+              <a href="#" class="text-gray-500 text-sm">Repo</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6 -->
+        <article class="card bg-white rounded-lg border p-4">
+          <div class="rounded-md overflow-hidden">
+            <div class="ph-svg">
+              <svg viewBox="0 0 600 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" fill="#0ea5ff22"/>
+                <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Poppins" font-size="24" fill="#0369a1">Small App</text>
+              </svg>
+            </div>
+          </div>
+          <div class="mt-4">
+            <h3 class="font-semibold text-lg">Todo App</h3>
+            <p class="mt-2 text-sm text-gray-500">A fast CRUD app demonstrating clean component design and local storage persistence.</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded">React</span>
+              <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded">LocalStorage</span>
+            </div>
+
+            <div class="mt-4 flex gap-3">
+              <a href="#" class="text-sky-500 font-medium text-sm">Live Demo</a>
+              <a href="#" class="text-gray-500 text-sm">Repo</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-12">
+      <h2 class="text-2xl font-semibold">Skills</h2>
+      <p class="mt-2 text-sm text-gray-500">Tools and technologies I use frequently.</p>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="bg-white p-4 rounded-lg border">
+          <div class="flex justify-between items-center">
+            <div>
+              <h4 class="font-semibold">HTML</h4>
+              <p class="text-xs text-gray-500">Semantic, accessible markup</p>
+            </div>
+            <div class="text-sm font-medium text-slate-700">95%</div>
+          </div>
+          <div class="mt-3 progress">
+            <span style="width:95%"></span>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg border">
+          <div class="flex justify-between items-center">
+            <div>
+              <h4 class="font-semibold">CSS</h4>
+              <p class="text-xs text-gray-500">Responsive layouts & animation</p>
+            </div>
+            <div class="text-sm font-medium text-slate-700">90%</div>
+          </div>
+          <div class="mt-3 progress">
+            <span style="width:90%"></span>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg border">
+          <div class="flex justify-between items-center">
+            <div>
+              <h4 class="font-semibold">JavaScript</h4>
+              <p class="text-xs text-gray-500">ES6+, DOM, async</p>
+            </div>
+            <div class="text-sm font-medium text-slate-700">88%</div>
+          </div>
+          <div class="mt-3 progress">
+            <span style="width:88%"></span>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg border">
+          <div class="flex justify-between items-center">
+            <div>
+              <h4 class="font-semibold">React</h4>
+              <p class="text-xs text-gray-500">Component-driven UIs</p>
+            </div>
+            <div class="text-sm font-medium text-slate-700">85%</div>
+          </div>
+          <div class="mt-3 progress">
+            <span style="width:85%"></span>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg border">
+          <div class="flex justify-between items-center">
+            <div>
+              <h4 class="font-semibold">Tailwind</h4>
+              <p class="text-xs text-gray-500">Utility-first styling</p>
+            </div>
+            <div class="text-sm font-medium text-slate-700">92%</div>
+          </div>
+          <div class="mt-3 progress">
+            <span style="width:92%"></span>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg border">
+          <div class="flex justify-between items-center">
+            <div>
+              <h4 class="font-semibold">Node.js</h4>
+              <p class="text-xs text-gray-500">APIs and tooling</p>
+            </div>
+            <div class="text-sm font-medium text-slate-700">80%</div>
+          </div>
+          <div class="mt-3 progress">
+            <span style="width:80%"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-12">
+      <h2 class="text-2xl font-semibold">Services</h2>
+      <p class="mt-2 text-sm text-gray-500">What I can help you with.</p>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="card bg-white p-6 rounded-lg border">
+          <div class="w-12 h-12 rounded-md bg-sky-100 text-sky-600 flex items-center justify-center">
+            <!-- icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7h18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5 7v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+          <h3 class="mt-4 font-semibold">Website Design</h3>
+          <p class="mt-2 text-sm text-gray-500">Modern, user-centered designs with a focus on clarity and conversion.</p>
+        </div>
+
+        <div class="card bg-white p-6 rounded-lg border">
+          <div class="w-12 h-12 rounded-md bg-sky-100 text-sky-600 flex items-center justify-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12h18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5 12v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+          <h3 class="mt-4 font-semibold">Frontend Development</h3>
+          <p class="mt-2 text-sm text-gray-500">Fast, component-driven frontends built with modern toolchains.</p>
+        </div>
+
+        <div class="card bg-white p-6 rounded-lg border">
+          <div class="w-12 h-12 rounded-md bg-sky-100 text-sky-600 flex items-center justify-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle><path d="M19.4 15a8 8 0 1 0-14.8 0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+          <h3 class="mt-4 font-semibold">Responsive UI</h3>
+          <p class="mt-2 text-sm text-gray-500">Designs and components that adapt beautifully across devices.</p>
+        </div>
+
+        <div class="card bg-white p-6 rounded-lg border">
+          <div class="w-12 h-12 rounded-md bg-sky-100 text-sky-600 flex items-center justify-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><polyline points="7 10 12 15 17 10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline><line x1="12" y1="15" x2="12" y2="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line></svg>
+          </div>
+          <h3 class="mt-4 font-semibold">Bug Fixing</h3>
+          <p class="mt-2 text-sm text-gray-500">Reliable debugging, performance tuning, and accessibility fixes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-12">
+      <h2 class="text-2xl font-semibold">Contact</h2>
+      <p class="mt-2 text-sm text-gray-500">Get in touch — I’m available for freelance projects and collaborations.</p>
+
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <form id="contactForm" class="space-y-4 bg-white p-6 rounded-lg border">
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Name</label>
+            <input required name="name" class="mt-1 w-full rounded-md border px-3 py-2 text-sm" placeholder="Your name" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Email</label>
+            <input required type="email" name="email" class="mt-1 w-full rounded-md border px-3 py-2 text-sm" placeholder="you@domain.com" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Message</label>
+            <textarea required name="message" rows="5" class="mt-1 w-full rounded-md border px-3 py-2 text-sm" placeholder="Tell me about your project..."></textarea>
+          </div>
+
+          <div>
+            <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 bg-sky-500 text-white rounded-md">Send Message</button>
+            <span id="formMsg" class="ml-3 text-sm text-green-600 hidden">Message sent (local preview)</span>
+          </div>
+          <p class="text-xs text-gray-400">This is a static template — form submission is handled locally. Replace with your backend or Form provider (Formspree, Netlify Forms) when publishing.</p>
+        </form>
+
+        <div class="bg-white p-6 rounded-lg border">
+          <h3 class="font-semibold">Other ways to reach me</h3>
+          <div class="mt-4 space-y-3 text-sm text-gray-600">
+            <div><strong>Email:</strong> <a href="mailto:vishal@example.com" class="text-sky-500">vishal@example.com</a></div>
+            <div><strong>GitHub:</strong> <a href="https://github.com/vishalgill1" class="text-sky-500" target="_blank" rel="noopener noreferrer">github.com/vishalgill1</a></div>
+            <div><strong>LinkedIn:</strong> <a href="#" class="text-sky-500" target="_blank" rel="noopener noreferrer">linkedin.com/in/vishal</a></div>
+            <div><strong>Instagram:</strong> <a href="#" class="text-sky-500" target="_blank" rel="noopener noreferrer">@vishal</a></div>
+          </div>
+
+          <div class="mt-6">
+            <h4 class="font-medium">Availability</h4>
+            <p class="text-sm text-gray-500 mt-2">Open to freelance work and collaborations. Typical turnaround: 1–3 weeks depending on scope.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t bg-white/80 backdrop-blur-sm">
+    <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="text-sm text-gray-600">© 2025 Vishal</div>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/vishalgill1" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-sky-500">GitHub</a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-sky-500">Instagram</a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-sky-500">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
